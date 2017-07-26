@@ -3,7 +3,7 @@
 
 ## 效果图
 
- ![image](https://github.com/Allure0/AndroidStateLayout/tree/master/image/android_state_layout.gif)
+ ![image](https://github.com/Allure0/AndroidStateLayout/blob/master/image/android_state_layout.gif)
 
 ### 使用方式
 Config in xml:
