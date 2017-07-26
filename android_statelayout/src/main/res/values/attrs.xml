@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="StateLayout">
-        <attr name="state_loading" format="reference" />
-        <attr name="state_empty" format="reference" />
-        <attr name="state_content" format="reference" />
-        <attr name="state_error" format="reference" />
-    </declare-styleable>
-</resources>

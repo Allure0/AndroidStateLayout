@@ -32,13 +32,8 @@
     <com.allure.statelayout.StateLayout
         android:id="@+id/state_layout"
         android:layout_width="match_parent"
-        app:state_loading="@layout/state_loading"
-        app:state_empty="@layout/state_empty"
-        app:state_error="@layout/state_error"
-        app:state_content="@layout/state_content"
         android:layout_height="match_parent">
 
-        <include layout="@layout/state_content"></include>
 
     </com.allure.statelayout.StateLayout>
 </LinearLayout>

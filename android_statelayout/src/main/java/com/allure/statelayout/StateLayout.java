@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
@@ -31,10 +30,7 @@ public class StateLayout extends FrameLayout {
     public static final int STATE_CONTENT = 0x13;
 
     private int displayState = -1;
-    private int loadingLayoutId;
-    private int errorLayoutId;
-    private int emptyLayoutId;
-    private int contentLayoutId;
+
 
     private OnStateChangeListener stateChangeListener;
 
@@ -45,21 +41,14 @@ public class StateLayout extends FrameLayout {
 
     public StateLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
+
     }
 
     public StateLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setupAttrs(context, attrs);
     }
 
-    private void setupAttrs(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.StateLayout);
-        loadingLayoutId = typedArray.getResourceId(R.styleable.StateLayout_state_loading, LAYOUT_NONE);
-        errorLayoutId = typedArray.getResourceId(R.styleable.StateLayout_state_empty, LAYOUT_NONE);
-        emptyLayoutId = typedArray.getResourceId(R.styleable.StateLayout_state_content, LAYOUT_NONE);
-        contentLayoutId = typedArray.getResourceId(R.styleable.StateLayout_state_error, LAYOUT_NONE);
-        typedArray.recycle();
-    }
+
 
     @Override
     protected void onFinishInflate() {
@@ -67,33 +56,8 @@ public class StateLayout extends FrameLayout {
 
         int childCount = getChildCount();
         if (childCount > 1) {
-            throw new IllegalStateException("XStateController can only host 1 elements");
+            throw new IllegalStateException("StateLayout can only host 1 elements about content");
         } else {
-            if (loadingLayoutId != LAYOUT_NONE) {
-                loadingView = inflate(getContext(), loadingLayoutId, null);
-                addView(loadingView);
-            }
-            if (errorLayoutId != LAYOUT_NONE) {
-                errorView = inflate(getContext(), errorLayoutId, null);
-                addView(errorView);
-            }
-            if (emptyLayoutId != LAYOUT_NONE) {
-                emptyView = inflate(getContext(), emptyLayoutId, null);
-                addView(emptyView);
-            }
-            if (contentLayoutId != LAYOUT_NONE) {
-                contentView = inflate(getContext(), contentLayoutId, null);
-                addView(contentView);
-            }
-
-            if (contentView == null) {
-                if (childCount == 1) {
-                    contentView = getChildAt(0);
-                }
-            }
-            if (contentView == null) {
-                throw new IllegalStateException("contentView can not be null");
-            }
 
             for (int index = 0; index < getChildCount(); index++) {
                 getChildAt(index).setVisibility(GONE);
@@ -322,7 +286,7 @@ public class StateLayout extends FrameLayout {
 
 
             set.playTogether(enter, exit);
-            set.setDuration(400);
+            set.setDuration(200);
             set.addListener(new Animator.AnimatorListener() {
                 @Override
                 public void onAnimationStart(Animator animation) {

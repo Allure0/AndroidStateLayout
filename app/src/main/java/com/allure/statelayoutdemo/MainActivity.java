@@ -20,24 +20,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_state);
         stateLayout = (StateLayout) findViewById(R.id.state_layout);
-//        stateLayout.setLoadingView(View.inflate(this, R.layout.state_loading, null));
-//        stateLayout.setContentView(View.inflate(this, R.layout.state_content, null));
-//        stateLayout.setErrorView(View.inflate(this, R.layout.state_error, null));
-//        stateLayout.setEmptyView(View.inflate(this, R.layout.state_empty, null));
-        stateLayout.showLoading();
+
+        stateLayout.setLoadingView(View.inflate(this, R.layout.state_loading, null));
+        stateLayout.setContentView(View.inflate(this, R.layout.state_content, null));
+        stateLayout.setErrorView(View.inflate(this, R.layout.state_error, null));
+        stateLayout.setEmptyView(View.inflate(this, R.layout.state_empty, null));
+
+//        stateLayout.showLoading();
+//        stateLayout.showEmpty();
+//        stateLayout.showError();
+        stateLayout.showContent();
+
 
         //视图切换动画
-        stateLayout.setStateChangeListener(new StateLayout.SimpleStateChangeListener(){
-            @Override
-            public void onStateChange(int oldState, int newState) {
-                super.onStateChange(oldState, newState);
-            }
-
-            @Override
-            public void animationState(View exitView, View enterView) {
-                super.animationState(exitView, enterView);
-            }
-        });
+//        stateLayout.setStateChangeListener(new StateLayout.SimpleStateChangeListener(){
+//            @Override
+//            public void onStateChange(int oldState, int newState) {
+//                super.onStateChange(oldState, newState);
+//            }
+//
+//            @Override
+//            public void animationState(View exitView, View enterView) {
+//                super.animationState(exitView, enterView);
+//            }
+//        });
     }
 
 
