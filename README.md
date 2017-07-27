@@ -4,7 +4,11 @@
 ## 效果图
 
  ![image](https://github.com/Allure0/AndroidStateLayout/blob/master/image/android_state_layout.gif)
+### 引入方式
 
+```
+compile 'com.allure0:AndroidStateLayout:1.0.0'
+```
 ### 使用方式
 Config in xml:
 
